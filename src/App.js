@@ -1,12 +1,14 @@
 import './App.css';
-import Pr_AxisExample from './Pr_AxisExample';
-import Pr_drag from './Pr_drag';
+import Pr_AxisEx from './Pr_AxisEx';
+import Pr_BoundsEx from './Pr_BoundsEx';
+import Pr_Drag from './Pr_Drag';
 
 function App() {
   return (
     <div className='App'>
       {/* <Pr_drag /> */}
-      <Pr_AxisExample />
+      {/* <Pr_AxisEx /> */}
+      <Pr_BoundsEx />
     </div>
   );
 }

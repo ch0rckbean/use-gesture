@@ -1,8 +1,8 @@
-import { useSpring, animated } from '@react-spring/web';
 import React from 'react';
+import { useSpring, animated } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
 
-export default function Pr_AxisExample() {
+export default function Pr_AxisEx() {
   ////////////// X
 
   //   const [{ x }, api] = useSpring(() => ({ x: 0 }));
