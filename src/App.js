@@ -4,6 +4,8 @@ import Pr_BoundsEx from './Pr_BoundsEx';
 import Pr_Delay from './Pr_Delay';
 import Pr_Drag from './Pr_Drag';
 import Pr_Offset from './Pr_Offset';
+import Pr_PreventDefault from './Pr_PreventDefault';
+import Pr_Rubberband from './Pr_Rubberband';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       {/* <Pr_AxisEx /> */}
       {/* <Pr_BoundsEx /> */}
       {/* <Pr_Delay /> */}
-      <Pr_Offset />
+      {/* <Pr_Offset /> */}
+      {/* <Pr_PreventDefault /> */}
+      <Pr_Rubberband />
     </div>
   );
 }
