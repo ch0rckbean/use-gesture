@@ -6,6 +6,7 @@ import Pr_Drag from './Pr_Drag';
 import Pr_Offset from './Pr_Offset';
 import Pr_PreventDefault from './Pr_PreventDefault';
 import Pr_Rubberband from './Pr_Rubberband';
+import Pr_Threshold from './Pr_Threshold';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       {/* <Pr_Delay /> */}
       {/* <Pr_Offset /> */}
       {/* <Pr_PreventDefault /> */}
-      <Pr_Rubberband />
+      {/* <Pr_Rubberband /> */}
+      <Pr_Threshold />
     </div>
   );
 }
