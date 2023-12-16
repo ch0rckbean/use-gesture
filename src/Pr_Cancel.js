@@ -15,7 +15,6 @@ export default function Pr_Cancel() {
       {...bind()}
       style={{
         x,
-
         width: '100px',
         height: '100px',
         backgroundColor: 'blue',

@@ -7,6 +7,7 @@ import Pr_Drag from './Pr_Drag';
 import Pr_Offset from './Pr_Offset';
 import Pr_PreventDefault from './Pr_PreventDefault';
 import Pr_Rubberband from './Pr_Rubberband';
+import Pr_Swipe from './Pr_Swipe';
 import Pr_Threshold from './Pr_Threshold';
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
       {/* <Pr_PreventDefault /> */}
       {/* <Pr_Rubberband /> */}
       {/* <Pr_Threshold /> */}
-      <Pr_Cancel />
+      {/* <Pr_Cancel /> */}
+      <Pr_Swipe />
     </div>
   );
 }
