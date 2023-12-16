@@ -4,7 +4,9 @@ import { useDrag } from '@use-gesture/react';
 export default function Pr_Offset() {
   const [{ x }, api] = useSpring(() => ({ x: 0 }));
   const bind = useDrag(
-    ({ down, offset: [ox] }) =>
+    (
+      { down, offset: [ox] } // offset값은 ox로 유지 됨
+    ) =>
       api.start({
         x: down ? ox : 100, // 돌아오는 위치
         immediate: down,
