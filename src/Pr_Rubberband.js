@@ -2,6 +2,8 @@ import { useSpring, animated } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
 
 export default function Pr_Rubberband() {
+  // function rubberbandIfOutOfBounds(position: number, min: number, max: number, constant = 0.15): number
+
   const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }));
   const bind = useDrag(
     ({ down, offset: [ox, oy] }) =>
