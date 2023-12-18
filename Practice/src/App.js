@@ -1,4 +1,5 @@
 import './App.css';
+import DraggableList from './Draggable-List/Draggable-List';
 import Pr_AxisEx from './Pr_AxisEx';
 import Pr_BoundsEx from './Pr_BoundsEx';
 import Pr_Cancel from './Pr_Cancel';
@@ -22,7 +23,9 @@ function App() {
       {/* <Pr_Rubberband /> */}
       {/* <Pr_Threshold /> */}
       {/* <Pr_Cancel /> */}
-      <Pr_Swipe />
+      {/* <Pr_Swipe /> */}
+      {/* 실습 */}
+      <DraggableList />
     </div>
   );
 }
