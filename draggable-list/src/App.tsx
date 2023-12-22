@@ -44,6 +44,8 @@ function DraggableList({ items }: { items: string[] }) {
     );
 
     const newOrder = swap(order.current, curIndex, curRow);
+    // swap(배열, 인덱스1, 인덱스2)
+    // - 배열 내에서 인덱스1과 인덱스2의 요소를 바꿈
     api.start(fn(newOrder, active, originalIndex, curIndex, y));
     if (!active) {
       order.current = newOrder;
