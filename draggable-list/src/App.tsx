@@ -34,6 +34,10 @@ function DraggableList({ items }: { items: string[] }) {
   const bind = useDrag(({ args: [originalIndex], active, movement: [, y] }) => {
     const curIndex = order.current.indexOf(originalIndex);
     const curRow = clamp(
+      // clamp(num, lower, upper)
+      // - num < lower 일 때 lower 반환
+      // - num > upper 일 때 upper 반환
+      // - lower < num < upper 일 때 num 반환
       Math.round((curIndex * 2 + y) / 100),
       0,
       items.length - 1
