@@ -33,7 +33,7 @@ const fn =
 
 function DraggableList({ items }: { items: string[] }) {
   const order = useRef(items.map((_, index) => index)); //item 초기 순서 배열 만듦(order.current)
-  console.log(order.current, items); // [0, 2, 1, 3] ['use', 'gesture', '실습', '첫번쨍']
+  // console.log(order.current, items); // [0, 2, 1, 3] ['use', 'gesture', '실습', '첫번쨍']
   // 첫번째 인자를 쓰지 않더라도 TS에서의 타입 추론을 위해 _로 명시
   const [springs, api] = useSprings(items.length, fn(order.current));
   // - items.length: 애니메이션 스프링 개수
@@ -41,6 +41,8 @@ function DraggableList({ items }: { items: string[] }) {
 
   const bind = useDrag(({ args: [originalIndex], active, movement: [, y] }) => {
     const curIndex = order.current.indexOf(originalIndex);
+    // console.log(originalIndex); // 각 블록의 원래 순서 나옴
+    console.log(curIndex); // 각 블록의 현재 순서 나옴
     const curRow = clamp(
       // clamp(num, lower, upper)
       // - num < lower 일 때 lower 반환
