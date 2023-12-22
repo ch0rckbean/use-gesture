@@ -5,6 +5,7 @@ import clamp from 'lodash.clamp';
 import swap from 'lodash-move';
 import styles from './styles.module.css';
 
+// 애니메이션 설정 객체
 const fn =
   (order: number[], active = false, originalIndex = 0, curIndex = 0, y = 0) =>
   (index: number) =>
@@ -32,11 +33,11 @@ const fn =
 
 function DraggableList({ items }: { items: string[] }) {
   const order = useRef(items.map((_, index) => index)); //item 초기 순서 배열 만듦(order.current)
-  // console.log(order.current, items); // [0, 2, 1, 3] ['use', 'gesture', '실습', '첫번쨍']
+  console.log(order.current, items); // [0, 2, 1, 3] ['use', 'gesture', '실습', '첫번쨍']
   // 첫번째 인자를 쓰지 않더라도 TS에서의 타입 추론을 위해 _로 명시
   const [springs, api] = useSprings(items.length, fn(order.current));
-
-  // . fn에 초기 인덱스 배열을 index 인자로 전달
+  // - items.length: 애니메이션 스프링 개수
+  // - fn(order.current) : 각 스프링에 대한 초기 설정(초기 인덱스 배열을 index 인자로 전달)
 
   const bind = useDrag(({ args: [originalIndex], active, movement: [, y] }) => {
     const curIndex = order.current.indexOf(originalIndex);
