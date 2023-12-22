@@ -8,18 +8,21 @@ import styles from './styles.module.css';
 const fn =
   (order: number[], active = false, originalIndex = 0, curIndex = 0, y = 0) =>
   (index: number) =>
-    active && index === originalIndex // 마우스 이벤트 발생
+    active && index === originalIndex // 마우스 이벤트 발생 시 == 블럭 드래그 시
       ? {
-          //블럭 드래그 시
           y: curIndex * y, // y축 방향 이동 정도
           scale: 1.1,
           zIndex: 1,
           shadow: 15,
+          // 함수 선언
           immediate: (key: string) => key === 'zIndex',
           config: (key: string) =>
             key === 'y' ? config.stiff : config.default,
+          // config.stiff : { mass: 1, tension: 210, friction: 20 }
+          // config.default : { mass: 1, tension: 170, friction: 26 }
         }
       : {
+          // 드래그 안 할 때
           y: order.indexOf(index) * 100,
           scale: 1,
           zIndex: 0,
@@ -28,8 +31,11 @@ const fn =
         };
 
 function DraggableList({ items }: { items: string[] }) {
-  const order = useRef(items.map((_, index) => index)); //item 순서
+  const order = useRef(items.map((_, index) => index)); //item 초기 순서 배열 만듦(order.current)
+  // console.log(order.current, items); // [0, 2, 1, 3] ['use', 'gesture', '실습', '첫번쨍']
   const [springs, api] = useSprings(items.length, fn(order.current));
+
+  // . fn에 초기 인덱스 배열을 index 인자로 전달
 
   const bind = useDrag(({ args: [originalIndex], active, movement: [, y] }) => {
     const curIndex = order.current.indexOf(originalIndex);
