@@ -38,29 +38,35 @@ function DraggableList({ items }: { items: string[] }) {
   const [springs, api] = useSprings(items.length, fn(order.current));
   // - items.length: 애니메이션 스프링 개수
   // - fn(order.current) : 각 스프링에 대한 초기 설정(초기 인덱스 배열을 index 인자로 전달)
+  // - 두번째 인자(config)가 첫번째 인자인 튜플에 각각 대응
+  // console.log(springs, api);
 
-  const bind = useDrag(({ args: [originalIndex], active, movement: [, y] }) => {
-    const curIndex = order.current.indexOf(originalIndex);
-    // console.log(originalIndex); // 각 블록의 원래 순서 나옴
-    console.log(curIndex); // 각 블록의 현재 순서 나옴
-    const curRow = clamp(
-      // clamp(num, lower, upper)
-      // - num < lower 일 때 lower 반환
-      // - num > upper 일 때 upper 반환
-      // - lower < num < upper 일 때 num 반환
-      Math.round((curIndex * 2 + y) / 100),
-      0,
-      items.length - 1
-    );
+  const bind = useDrag(
+    ({ args: [originalIndex], active, movement: [_, y] }) => {
+      // drag 이벤트 적용: active 시 y값에 이벤트 발생시킴
+      const curIndex = order.current.indexOf(originalIndex);
+      // console.log(originalIndex); // 각 블록의 원래 순서 나옴
+      // console.log(curIndex); // 각 블록의 현재 순서 나옴
+      const curRow = clamp(
+        // 드래그 블록의 현재 행 계산
+        // clamp(num, lower, upper)
+        // - num < lower 일 때 lower 반환
+        // - num > upper 일 때 upper 반환
+        // - lower < num < upper 일 때 num 반환
+        Math.round((curIndex * 2 + y) / 100),
+        0,
+        items.length - 1
+      );
 
-    const newOrder = swap(order.current, curIndex, curRow);
-    // swap(배열, 인덱스1, 인덱스2)
-    // - 배열 내에서 인덱스1과 인덱스2의 요소를 바꿈
-    api.start(fn(newOrder, active, originalIndex, curIndex, y));
-    if (!active) {
-      order.current = newOrder;
+      const newOrder = swap(order.current, curIndex, curRow);
+      // swap(배열, 인덱스1, 인덱스2)
+      // - 배열 내에서 인덱스1과 인덱스2의 요소를 바꿈
+      api.start(fn(newOrder, active, originalIndex, curIndex, y));
+      if (!active) {
+        order.current = newOrder;
+      }
     }
-  });
+  );
 
   return (
     <div className={styles.content} style={{ height: items.length * 100 }}>
@@ -71,6 +77,9 @@ function DraggableList({ items }: { items: string[] }) {
           style={{
             zIndex,
             boxShadow: shadow.to(
+              // shadow: 애니메이션 진행 상태값
+              // to: 스프링의 상태값 반환
+              // shadow가 변할 때마다 boxShadow값이 변함
               (s) => `rgba(0, 0, 0, 0.15) 0px ${s}px ${2 * s}px 0px`
             ),
             y,
