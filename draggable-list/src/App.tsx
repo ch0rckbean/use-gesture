@@ -79,7 +79,7 @@ function DraggableList({ items }: { items: string[] }) {
             boxShadow: shadow.to(
               // shadow: 애니메이션 진행 상태값
               // to: 스프링의 상태값 반환
-              // shadow가 변할 때마다 boxShadow값이 변함
+              // => shadow가 변할 때마다 boxShadow값이 변함
               (s) => `rgba(0, 0, 0, 0.15) 0px ${s}px ${2 * s}px 0px`
             ),
             y,
