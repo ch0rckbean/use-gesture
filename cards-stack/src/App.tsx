@@ -20,6 +20,7 @@ const to = (i: number) => ({
   rot: -10 + Math.random() * 20,
   delat: i * 100,
 });
+
 const from = (_i: number) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 const trans = (r: number, s: number) =>
   `perspective(1500px) rotateX(30deg) rotateY(${
@@ -27,7 +28,7 @@ const trans = (r: number, s: number) =>
   }deg) rotateZ(${r}deg) scale(${s})`;
 
 function Deck() {
-  const [gone] = useState(() => new Set()); // flick out된 모든 카드 set
+  const [gone] = useState(() => new Set()); // flick out 된 모든 카드 set
   const [props, api] = useSprings(cards.length, (i) => ({
     ...to(i),
     from: from(i),
@@ -60,6 +61,7 @@ function Deck() {
       });
 
       if (!active && gone.size === cards.length) {
+        // active 끝나고 카드도 모두 옮겨졌을 때
         setTimeout(() => {
           gone.clear();
           api.start((i) => to(i));
