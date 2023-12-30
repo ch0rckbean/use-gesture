@@ -43,11 +43,12 @@ function Deck() {
       direction: [xDir],
       velocity: [vx],
     }) => {
-      const trigger = vx > 0.2; // flick 빠르게 하면 날아가는 효과 trigger
+      const trigger = vx > 0.2; // flick 빠르게 하면 날아가는 효과 trigger함
       if (!active && trigger) gone.add(index);
       api.start((i) => {
         if (index !== i) return;
         const isGone = gone.has(index);
+        // 삼항연산자 2중 사용
         const x = isGone ? (200 + window.innerWidth) * xDir : active ? mx : 0;
         const rot = mx / 100 + (isGone ? xDir * 10 * vx : 0);
         const scale = active ? 1.1 : 1;
