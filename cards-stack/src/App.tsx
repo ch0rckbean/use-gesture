@@ -4,6 +4,7 @@ import { useDrag } from '@use-gesture/react';
 
 import styles from './styles.module.css';
 
+// card 배열
 const cards = [
   'https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg',
   'https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg',
