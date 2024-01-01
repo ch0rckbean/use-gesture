@@ -89,7 +89,11 @@ function Deck() {
 }
 
 function App() {
-  return <div className='App'></div>;
+  return (
+    <div className={`flex fill center ${styles.containter}`}>
+      <Deck />
+    </div>
+  );
 }
 
 export default App;
